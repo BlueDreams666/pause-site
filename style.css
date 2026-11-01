@@ -1,17 +1,18 @@
 :root {
-  --bg: #f6f4ef;
-  --text: #1b1a18;
-  --muted: #6c6862;
-  --line: #e2ddd4;
-  --accent: #6b6457;
+  --bg: #fff;
+  --text: #111114;
+  --muted: #5f6068;
+  --line: #e4e4ea;
+  --blue: #0000e6;
+  --link: #0000e6;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121212;
-    --text: #f2f0eb;
-    --muted: #9e9e9c;
-    --line: #2b2a28;
-    --accent: #d6d1c7;
+    --bg: #0b0b0e;
+    --text: #ececf1;
+    --muted: #9a9ba6;
+    --line: #26262e;
+    --link: #7c86ff;
   }
 }
 * { box-sizing: border-box; }
@@ -19,13 +20,20 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
-main { max-width: 640px; margin: 0 auto; padding: 56px 16px 64px; }
-h1, h2 { font-family: "New York", Georgia, "Times New Roman", serif; font-weight: 400; }
-h1 { font-size: 2.6rem; line-height: 1.1; margin: 0 0 12px; letter-spacing: -0.02em; }
-h2 { font-size: 1.35rem; margin: 36px 0 8px; }
-.lede { font-size: 1.2rem; color: var(--muted); margin: 0 0 24px; }
-.muted { color: var(--muted); font-size: 0.95rem; }
-a { color: var(--accent); }
-nav { display: flex; gap: 16px; margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.95rem; }
+main { max-width: 600px; margin: 0 auto; padding: 48px 20px 56px; }
+a { color: var(--link); text-underline-offset: 3px; }
+
+/* four strokes and a slash, like counting on a napkin */
+.tally { display: block; width: 72px; height: 40px; margin: 0 0 20px; color: var(--blue); }
+@media (prefers-color-scheme: dark) { .tally { color: var(--link); } }
+
+h1 { font: 700 2.4rem/1.1 "New York", Georgia, serif; margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 { font-size: 1.05rem; margin: 32px 0 4px; }
+.sub { margin: 0 0 28px; color: var(--muted); }
+p { margin: 0 0 14px; }
+.q { font-weight: 600; margin-bottom: 2px; }
+.note { color: var(--muted); font-size: 0.92rem; }
+footer { max-width: 600px; margin: 0 auto; padding: 16px 20px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+footer a { color: inherit; margin-right: 14px; }
