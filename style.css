@@ -34,7 +34,8 @@ h2 { font-size: 1.05rem; margin: 32px 0 4px; }
 .sub { margin: 0 0 28px; color: var(--muted); }
 p { margin: 0 0 14px; }
 .q { font-weight: 600; margin-bottom: 2px; }
-.note { color: var(--muted); font-size: 0.92rem; }
+.note { color: var(--muted); font-size: 0.92rem; text-wrap: balance; }
+.nb { white-space: nowrap; }
 footer { max-width: 600px; margin: 0 auto; padding: 16px 20px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
 footer a { color: inherit; margin-right: 14px; }
 :root { --pp: var(--link); }
@@ -80,3 +81,6 @@ body.pp { text-align: center; }
   .pp main { padding: 40px 18px 28px; }
   .pp h2::before { margin-top: 36px; }
 }
+
+/* Even line lengths, no stray last words */
+p, li, .pp main > p, .pp main > ul, .pp main > ol { text-wrap: balance; }
