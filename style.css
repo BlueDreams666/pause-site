@@ -1,86 +1,79 @@
+/* Pause: a notebook page. Young Serif for the few big words, Hanken Grotesk for reading. */
 :root {
-  --bg: #fff;
-  --text: #111114;
-  --muted: #5f6068;
-  --line: #e4e4ea;
-  --blue: #053A4F;
-  --link: #053A4F;
+  color-scheme: light dark;
+  --paper: #fbfcfc;
+  --ink: #15171a;
+  --soft: #5b6067;
+  --rule: #dde1e4;
+  --accent: #053A4F;
+  --select: rgba(5, 58, 79, .16);
+  --serif: "Young Serif", "Iowan Old Style", Georgia, serif;
+  --sans: "Hanken Grotesk", -apple-system, "Helvetica Neue", Arial, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b0b0e;
-    --text: #ececf1;
-    --muted: #9a9ba6;
-    --line: #26262e;
-    --link: #3092B5;
+    --paper: #0d0f11;
+    --ink: #e8ebed;
+    --soft: #9aa1a8;
+    --rule: #262b30;
+    --accent: #3092B5;
+    --select: rgba(48, 146, 181, .3);
   }
 }
 * { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--sans);
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
 }
-main { max-width: 600px; margin: 0 auto; padding: 48px 20px 56px; }
-a { color: var(--link); text-underline-offset: 3px; }
+::selection { background: var(--select); }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+main, footer { width: min(100% - 40px, 36rem); margin-inline: auto; }
+main { padding: 72px 0 24px; }
 
 /* four strokes and a slash, like counting on a napkin */
-.tally { display: block; width: 72px; height: 40px; margin: 0 0 20px; color: var(--blue); }
-@media (prefers-color-scheme: dark) { .tally { color: var(--link); } }
+.tally { display: block; width: 64px; height: 36px; margin: 0 0 28px; color: var(--accent); }
 
-h1 { font: 700 2.4rem/1.1 "New York", Georgia, serif; margin: 0 0 6px; letter-spacing: -0.01em; }
-h2 { font-size: 1.05rem; margin: 32px 0 4px; }
-.sub { margin: 0 0 28px; color: var(--muted); }
-p { margin: 0 0 14px; }
-.q { font-weight: 600; margin-bottom: 2px; }
-.note { color: var(--muted); font-size: 0.92rem; text-wrap: balance; }
+h1 { font: 400 clamp(3rem, 12vw, 4.4rem)/.95 var(--serif); letter-spacing: -.02em; margin: 0 0 18px; text-wrap: balance; }
+h1.page { font-size: clamp(2.4rem, 9vw, 3.2rem); }
+.sub { font-size: 1.25rem; line-height: 1.45; margin: 0 0 32px; max-width: 24em; text-wrap: pretty; }
+h1 + .small { margin: 0 0 32px; }
+h2 { font: 400 1.6rem/1.2 var(--serif); letter-spacing: -.01em; margin: 56px 0 12px; text-wrap: balance; }
+p { margin: 0 0 16px; text-wrap: pretty; }
+.q { font-weight: 650; margin: 30px 0 4px; }
+h2 + .q { margin-top: 8px; }
+strong { font-weight: 650; }
+.small { font-size: .95rem; color: var(--soft); }
+ul, ol { margin: 0 0 16px; padding-left: 1.2em; }
+li { margin: 0 0 8px; padding-left: .2em; }
+li::marker { color: var(--soft); }
+
+/* App Store badge, kept to Apple's black */
+.get { margin: 0 0 12px; }
+.store { display: inline-flex; align-items: center; gap: 10px; background: #000; color: #fff; border: 1px solid #a6a6a6; border-radius: 11px;
+         padding: 7px 18px 7px 14px; text-decoration: none; line-height: 1.1; }
+.store:hover { background: #1b1d1f; }
+.store svg { width: 21px; height: 25px; fill: #fff; flex: none; }
+.store small { display: block; font-size: .7rem; }
+.store b { display: block; font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; }
+.get + .small { margin-bottom: 48px; }
+
+.note { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--soft); }
 .nb { white-space: nowrap; }
-footer { max-width: 600px; margin: 0 auto; padding: 16px 20px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
-footer a { color: inherit; margin-right: 14px; }
-:root { --pp: var(--link); }
 
-/* Hand-made look: one calm centered column, shared by the home, help and privacy pages */
-body.pp { text-align: center; }
-.pp main { max-width: 680px; margin: 0 auto; padding: 56px 22px 36px; }
-.pp h1 { font: 700 clamp(2.15rem, 6.4vw, 2.75rem)/1.08 "New York", "Iowan Old Style", Georgia, serif; letter-spacing: -.015em; margin: 0 auto 12px; max-width: 16em; text-wrap: balance; }
-.pp h1 + .sub, .pp h1 + .small, .pp .top + .sub { font: italic 1.08rem/1.55 "New York", "Iowan Old Style", Georgia, serif; color: var(--muted); max-width: 31em; margin: 0 auto 26px; text-wrap: pretty; }
-.pp main > p, .pp main > ul, .pp main > ol, .pp main > .card { max-width: 33em; margin-left: auto; margin-right: auto; text-wrap: pretty; }
-.pp h2 { font: italic 600 1.32rem/1.3 "New York", "Iowan Old Style", Georgia, serif; color: var(--pp); letter-spacing: 0; margin: 0 auto 10px; max-width: 26em; text-wrap: balance; }
-.pp h2::before { content: ""; display: block; margin-top: 52px; }
-.pp ul, .pp ol { list-style: none; padding: 0; }
-.pp li { margin: 0 0 12px; }
-.pp ol { counter-reset: step; }
-.pp ol li { counter-increment: step; }
-.pp ol li::before { content: counter(step); display: block; width: 26px; height: 26px; margin: 0 auto 4px; border: 1.5px solid var(--pp); border-radius: 50%;
-                    font: italic 600 .9rem/23px "New York", Georgia, serif; color: var(--pp); }
-.pp strong { font-weight: 650; }
-.pp a { color: var(--pp); }
-.pp .q { font-weight: 650; margin-top: 26px; margin-bottom: 4px; }
-.pp .small { font-size: .92rem; color: var(--muted); }
-.pp .card { text-align: center; }
-.pp main > p.note { display: block; width: fit-content; max-width: 100%; margin: 48px auto 0; padding: 16px 24px; border: 1px solid var(--line); border-radius: 16px; font-size: 1rem; color: var(--muted); }
-.pp header.site { justify-content: center; flex-wrap: wrap; }
-.pp header.site nav { margin-left: 18px; }
-.pp footer { text-align: center; border-top: 0; padding-top: 8px; }
-.pp footer a { margin: 0 9px; }
-.pp .hero-icon { display: block; width: 96px; height: 96px; margin: 0 auto 22px; border-radius: 22px; rotate: -4deg; box-shadow: 0 12px 30px rgba(0,0,0,.18); }
-.pp .tally { margin: 0 auto 22px; }
-.pp .top { flex-direction: column; justify-content: center; gap: 18px; margin-bottom: 12px; }
-.pp .get { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 18px; margin: 4px auto 12px; }
-.pp .store { display: inline-flex; align-items: center; gap: 10px; background: #000; color: #fff; border: 1px solid #a6a6a6; border-radius: 12px;
-             padding: 7px 18px 7px 14px; text-decoration: none; line-height: 1.1; text-align: left; transition: transform .15s; }
-.pp .store:hover { transform: translateY(-1px); }
-.pp .store svg { width: 22px; height: 26px; fill: #fff; flex: none; }
-.pp .store small { display: block; font-size: .7rem; letter-spacing: .01em; }
-.pp .store b { display: block; font-size: 1.28rem; font-weight: 600; letter-spacing: -.01em; }
-.pp .get .soon { background: none; color: var(--muted); border: 1.5px dashed var(--line); font-weight: 500; font-style: italic; padding: 10px 18px; border-radius: 12px; }
-.pp .shots { justify-content: center; margin: 34px auto 8px; }
-.pp .shots figcaption { font-style: italic; }
+footer { display: flex; gap: 22px; padding: 8px 0 56px; font-size: .95rem; }
+footer a { color: var(--soft); }
+footer a:hover { color: var(--ink); }
+
 @media (max-width: 520px) {
-  .pp main { padding: 40px 18px 28px; }
-  .pp h2::before { margin-top: 36px; }
+  main { padding-top: 48px; }
+  .sub { font-size: 1.15rem; }
+  h2 { margin-top: 44px; }
 }
-
-/* Even line lengths, no stray last words */
-p, li, .pp main > p, .pp main > ul, .pp main > ol { text-wrap: balance; }
