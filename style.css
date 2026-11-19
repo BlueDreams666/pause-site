@@ -1,23 +1,27 @@
 /* Pause: a notebook page. Young Serif for the few big words, Hanken Grotesk for reading. */
 :root {
   color-scheme: light dark;
-  --paper: #fbfcfc;
-  --ink: #15171a;
-  --soft: #5b6067;
-  --rule: #dde1e4;
-  --accent: #053A4F;
-  --select: rgba(5, 58, 79, .16);
+  --paper: #f3f3f7;
+  --ink: #161722;
+  --soft: #5d5f70;
+  --rule: #dcdce6;
+  --accent: #2b2d4a;
+  --head: #161722;
+  --peach: #f0a283;
+  --select: rgba(253, 187, 160, .45);
   --serif: "Young Serif", "Iowan Old Style", Georgia, serif;
   --sans: "Hanken Grotesk", -apple-system, "Helvetica Neue", Arial, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #0d0f11;
-    --ink: #e8ebed;
-    --soft: #9aa1a8;
-    --rule: #262b30;
-    --accent: #3092B5;
-    --select: rgba(48, 146, 181, .3);
+    --paper: #15161f;
+    --ink: #e9e8ef;
+    --soft: #9d9fb0;
+    --rule: #2a2c3b;
+    --accent: #FDBBA0;
+    --head: #FDBBA0;
+    --peach: #FDBBA0;
+    --select: rgba(253, 187, 160, .28);
   }
 }
 * { box-sizing: border-box; }
@@ -31,16 +35,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 ::selection { background: var(--select); }
-a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: .2em; }
-a:hover { text-decoration-thickness: 2px; }
+a { color: var(--accent); text-decoration-color: var(--peach); text-decoration-thickness: 2px; text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: 3px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
 
 main, footer { width: min(100% - 40px, 36rem); margin-inline: auto; }
 main { padding: 72px 0 24px; }
 
-/* four strokes and a slash, like counting on a napkin */
-.tally { display: block; width: 64px; height: 36px; margin: 0 0 28px; color: var(--accent); }
+/* The app's own icon */
+.appicon { display: block; width: 72px; height: 72px; border-radius: 17px; margin: 0 0 26px; }
+.home { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 30px; padding: 6px 0; color: var(--ink); text-decoration: none; font: 400 1.15rem/1 var(--serif); }
+.home img { width: 40px; height: 40px; border-radius: 10px; }
+@media (prefers-color-scheme: dark) { .appicon, .home img { box-shadow: 0 0 0 1px var(--rule); } }
 
+h1, h2 { color: var(--head); }
 h1 { font: 400 clamp(3rem, 12vw, 4.4rem)/.95 var(--serif); letter-spacing: -.02em; margin: 0 0 18px; text-wrap: balance; }
 h1.page { font-size: clamp(2.4rem, 9vw, 3.2rem); }
 .sub { font-size: 1.25rem; line-height: 1.45; margin: 0 0 32px; max-width: 24em; text-wrap: pretty; }
